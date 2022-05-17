@@ -277,7 +277,8 @@ export default function Benchmarks({ url, data }: PageProps<Data>) {
                   columns={benchData.threadCount.filter(({ name }) =>
                     !typescriptBenches.includes(name)
                   )}
-                />
+                  yLabel="threads"
+                  />
                 <p class={tw`mt-1`}>
                   How many threads various programs use. Smaller is better.
                 </p>
@@ -293,8 +294,9 @@ export default function Benchmarks({ url, data }: PageProps<Data>) {
                 </a>{" "}
                 <BenchmarkChart
                   columns={benchData.syscallCount.filter(({ name }) =>
-                    !typescriptBenches.includes(name)
+                  !typescriptBenches.includes(name)
                   )}
+                  yLabel="syscalls"
                 />
                 <p class={tw`mt-1`}>
                   How many total syscalls are performed when executing a given
@@ -427,7 +429,7 @@ export default function Benchmarks({ url, data }: PageProps<Data>) {
                   columns={benchData.bundleSize}
                   yLabel="kilobytes"
                   yTickFormat={formatKB}
-                />
+                  />
                 <p class={tw`mt-1`}>Size of different bundled scripts.</p>
                 <ul class={tw`ml-8 list-disc my-2`}>
                   <li>
@@ -445,11 +447,14 @@ export default function Benchmarks({ url, data }: PageProps<Data>) {
                   <h5
                     class={tw
                       `text-lg font-medium tracking-tight hover:underline`}
-                  >
+                      >
                     Cargo Dependencies
                   </h5>
                 </a>{" "}
-                <BenchmarkChart columns={benchData.cargoDeps} />
+                <BenchmarkChart
+                  columns={benchData.cargoDeps}
+                  yLabel="dependencies"
+                  />
               </div>
             </div>
             <div class={tw`mt-20`}>
